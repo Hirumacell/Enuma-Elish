@@ -3,6 +3,7 @@ import { ClientProxy } from '@nestjs/microservices';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
+import { UserWithAnimalDTO } from 'src/dto/userwithanimalDTO';
 
 @Injectable()
 export class UserService {
@@ -22,6 +23,28 @@ export class UserService {
   }
 
   notifyAnimalService(userData: any) {
-    return this.client.emit('user_created', userData); 
+    return this.client.emit('user_created', userData);
+  }
+
+  createWithAnimal(
+    user: Partial<UserWithAnimalDTO>,
+  ): Promise<UserWithAnimalDTO> {
+    const animal = {
+      nom: user.animal.nom,
+      age: user.animal.age,
+      espece: user.animal.espece,
+    };
+
+    const userData = {
+      nom: user.nom,
+      email: user.email,
+    };
+    this.client.emit('animal_created', animal);
+    this.userRepository.save(userData);
+    const result = new UserWithAnimalDTO();
+    result.nom = user.nom;
+    result.email = user.email;
+    result.animal = animal;
+    return Promise.resolve(result);
   }
 }
