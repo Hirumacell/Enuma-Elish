@@ -17,3 +17,16 @@ Run with :
 ```bash
 npm run start:dev
 ```
+
+# JSON Objects 
+```json
+{
+  "nom": "Hiru",
+  "email": "testing.rabbit@mq.com",
+  "animal": {
+    "nom": "malosse",
+    "age": 25,
+    "espece": "doggo"
+  }
+}
+```
