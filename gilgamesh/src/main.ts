@@ -8,7 +8,7 @@ async function bootstrap() {
   app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.RMQ,
     options: {
-      urls: ['amqp://localhost:5672'], // ou Clever Cloud si hébergé
+      urls: ['amqp://rabbitmq:5672'], // ou Clever Cloud si hébergé
       queue: 'gilgamesh_queue',
       queueOptions: { durable: false },
     },
