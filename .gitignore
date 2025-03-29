@@ -1,0 +1,38 @@
+# Global node_modules & dist
+**/node_modules/
+**/dist/
+
+# Environment files
+**/.env
+.env
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Editor / IDE configs
+.vscode/
+.idea/
+
+# Compiled TypeScript files
+**/*.js
+**/*.js.map
+
+# Misc
+*.swp
+*.swo
+*.bak
+
+# Ignore test coverage or build files if you add them later
+coverage/
+**/coverage/
+
+# Optional for mono-repos:
+pnpm-lock.yaml
+yarn.lock
