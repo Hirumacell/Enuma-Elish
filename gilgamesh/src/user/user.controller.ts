@@ -13,6 +13,7 @@ export class UserController {
 
   @Post()
   create(@Body() user: Partial<User>): Promise<User> {
+    this.userService.notifyAnimalService(user);
     return this.userService.create(user);
   }
 }

@@ -22,6 +22,6 @@ export class UserService {
   }
 
   notifyAnimalService(userData: any) {
-    return this.client.emit('user_created', userData); // ou .send pour réponse
+    return this.client.emit('user_created', userData); 
   }
 }
