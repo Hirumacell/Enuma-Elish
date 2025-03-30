@@ -1,12 +1,14 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
+import { JwtStrategy } from './auth/jwt.strategy';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'postgres',
+      host: 'localhost',
       port: 5432,
       username: 'postgres',
       password: 'root',
@@ -16,6 +18,8 @@ import { UserModule } from './user/user.module';
       synchronize: true,
     }),
     UserModule,
+    PassportModule,
   ],
+  providers: [JwtStrategy],
 })
 export class AppModule {}

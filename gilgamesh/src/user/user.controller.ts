@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards, Req } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.entity';
 import { UserWithAnimalDTO } from 'src/dto/userwithanimalDTO';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('users')
 export class UserController {
@@ -24,5 +25,11 @@ export class UserController {
   ): Promise<UserWithAnimalDTO> {
     console.log('JSON', user);
     return this.userService.createWithAnimal(user);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('me')
+  getProfile(@Req() req) {
+    return req.user;
   }
 }
