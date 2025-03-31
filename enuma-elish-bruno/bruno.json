@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "enuma-elish-bruno",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

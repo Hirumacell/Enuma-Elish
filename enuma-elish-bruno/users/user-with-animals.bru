@@ -1,0 +1,23 @@
+meta {
+  name: user-with-animals
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3000/users/with-animal
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "nom": "Hiru",
+    "email": "testing.rabbit@mq.com",
+    "animal": {
+      "nom": "malosse",
+      "age": 25,
+      "espece": "doggo"
+    }
+  }
+}

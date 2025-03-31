@@ -42,18 +42,3 @@ Run with :
 npm run start:dev
 ```
 
-# JSON Objects 
-
-## http://localhost:3000/users/with-animal - POST
-
-```json
-{
-  "nom": "Hiru",
-  "email": "testing.rabbit@mq.com",
-  "animal": {
-    "nom": "malosse",
-    "age": 25,
-    "espece": "doggo"
-  }
-}
-```
