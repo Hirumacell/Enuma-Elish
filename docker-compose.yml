@@ -3,7 +3,7 @@ services:
     image: postgres:15
     restart: always
     ports:
-      - "5432:5432"
+      - "105432:105432"
     environment:
       POSTGRES_DB: radio-demon-warehouse
       POSTGRES_USER: postgres
@@ -22,7 +22,7 @@ services:
     build:
       context: ./gilgamesh
     ports:
-      - "3000:3000"
+      - "10011:10020"
     depends_on:
       - rabbitmq
       - postgres
@@ -35,7 +35,7 @@ services:
     build:
       context: ./kayn
     ports:
-      - "3001:3001"
+      - "10000:10010"
     depends_on:
       - rabbitmq
       - postgres
