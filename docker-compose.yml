@@ -3,7 +3,7 @@ services:
     image: postgres:15
     restart: always
     ports:
-      - "105432:105432"
+      - "10021:10021"
     environment:
       POSTGRES_DB: radio-demon-warehouse
       POSTGRES_USER: postgres
