@@ -28,12 +28,12 @@ export class AnimalMessageController {
 
   @EventPattern('user_created')
   handleUserCreated(data: any) {
-    console.log('User créé reçu depuis gilgamesh :', data);
+    //console.log('User créé reçu depuis gilgamesh :', data);
   }
 
   @EventPattern('animal_created')
   handleAnimalCreated(data: any) {
-    console.log('Animal à créé reçu depuis kayn :', data);
+    //console.log('Animal à créé reçu depuis kayn :', data);
 
     this.animalService.create(data);
   }

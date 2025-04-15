@@ -23,7 +23,6 @@ export class UserController {
   createWithAnimal(
     @Body() user: Partial<UserWithAnimalDTO>,
   ): Promise<UserWithAnimalDTO> {
-    console.log('JSON', user);
     return this.userService.createWithAnimal(user);
   }
 
