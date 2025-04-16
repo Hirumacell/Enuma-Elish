@@ -2,8 +2,6 @@ services:
   postgres:
     image: postgres:15
     restart: always
-    ports:
-      - "10021:10021"
     environment:
       POSTGRES_DB: radio-demon-warehouse
       POSTGRES_USER: postgres
@@ -11,38 +9,52 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./postgres-init/init.sql:/docker-entrypoint-initdb.d/init.sql
+    expose:
+      - "5432"  
 
   rabbitmq:
     image: rabbitmq:3-management
-    ports:
-      - "5672:5672"
-      - "15672:15672"
+    expose:
+      - "5672"
+      - "15672"
 
   gilgamesh:
     build:
       context: ./gilgamesh
-    ports:
-      - "10011:10020"
     depends_on:
       - rabbitmq
       - postgres
     volumes:
       - ./gilgamesh:/app
     working_dir: /app
-    command: npm run start:dev
+    command: npm run start:prod
+    expose:
+      - "3000" 
 
   kayn:
     build:
       context: ./kayn
-    ports:
-      - "10000:10010"
     depends_on:
       - rabbitmq
       - postgres
     volumes:
       - ./kayn:/app
     working_dir: /app
-    command: npm run start:dev
+    command: npm run start:prod
+    expose:
+      - "3001"
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/certs:/etc/nginx/certs
+    depends_on:
+      - gilgamesh
+      - kayn
 
 volumes:
   pgdata:
