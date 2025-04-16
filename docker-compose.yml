@@ -24,8 +24,6 @@ services:
     depends_on:
       - rabbitmq
       - postgres
-    volumes:
-      - ./gilgamesh:/app
     working_dir: /app
     command: npm run start:prod
     expose:
@@ -37,8 +35,6 @@ services:
     depends_on:
       - rabbitmq
       - postgres
-    volumes:
-      - ./kayn:/app
     working_dir: /app
     command: npm run start:prod
     expose:
