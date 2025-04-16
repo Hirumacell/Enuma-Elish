@@ -50,7 +50,7 @@ services:
       - "10010:80"
       - "8443:443"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx:/etc/nginx
       - ./nginx/certs:/etc/nginx/certs
     depends_on:
       - gilgamesh
