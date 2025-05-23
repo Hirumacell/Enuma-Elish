@@ -8,13 +8,13 @@ async function bootstrap() {
   app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.RMQ,
     options: {
-      urls: ['amqp://rabbitmq:5672'],
+      urls: [process.env.RABBITMQ_URL],
       queue: 'kayn_queue',
       queueOptions: { durable: false },
     },
   });
 
   await app.startAllMicroservices();
-  await app.listen(process.env.PORT ?? 3001);
+  await app.listen(process.env.PORT_KAYN ?? 3001);
 }
 bootstrap();

@@ -1,20 +1,22 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import {config} from "dotenv";
 
+config();
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.RMQ,
     options: {
-      urls: ['amqp://rabbitmq:5672'],
+      urls: [process.env.RABBITMQ_URL], // rabbitmq ou localhost
       queue: 'gilgamesh_queue',
       queueOptions: { durable: false },
     },
   });
 
   await app.startAllMicroservices();
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT_GILGAMESH ?? 3000);
 }
 bootstrap();
