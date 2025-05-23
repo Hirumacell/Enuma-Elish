@@ -23,10 +23,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   async validate(payload: any) {
     try {
-      console.log('✅ PAYLOAD VALIDÉ :', payload);
+      //console.log('✅ PAYLOAD VALIDÉ :', payload);
       return payload;
     } catch (e) {
-      console.error('❌ Erreur dans validate() :', e);
+      //console.error('❌ Erreur dans validate() :', e);
       throw e;
     }
   }
