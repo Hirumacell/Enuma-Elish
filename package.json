@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/microservices": "^11.1.3",
+    "dotenv": "^16.5.0",
+    "minimatch": "9",
+    "typescript": "^5.8.3"
+  }
+}
